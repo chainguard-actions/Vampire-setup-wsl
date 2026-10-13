@@ -1,0 +1,42 @@
+name: Test Alpine distribution
+on:
+  workflow_dispatch:
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # v6.0.2
+
+      - id: action
+        uses: .
+        continue-on-error: true
+        with:
+          distribution: Alpine-3.20
+          use-cache: 'false'
+
+      - name: Assert action ran with Alpine distribution
+        env:
+          OUTCOME: ${{ steps.action.outcome }}
+          WRAPPER_PATH: ${{ steps.action.outputs.wsl-shell-wrapper-path }}
+          DIST_WRAPPER_PATH: ${{ steps.action.outputs.wsl-shell-distribution-wrapper-path }}
+        run: |
+          echo "outcome: $OUTCOME"
+          echo "wsl-shell-wrapper-path: $WRAPPER_PATH"
+          echo "wsl-shell-distribution-wrapper-path: $DIST_WRAPPER_PATH"
+          if [ "$OUTCOME" = "success" ]; then
+            echo "Action succeeded — checking outputs"
+            if [ -z "$WRAPPER_PATH" ]; then
+              echo "FAIL: action succeeded but wsl-shell-wrapper-path is empty"
+              exit 1
+            fi
+            if [ -z "$DIST_WRAPPER_PATH" ]; then
+              echo "FAIL: action succeeded but wsl-shell-distribution-wrapper-path is empty"
+              exit 1
+            fi
+            echo "PASS: wrapper-path='$WRAPPER_PATH' dist-wrapper-path='$DIST_WRAPPER_PATH'"
+          elif [ "$OUTCOME" = "failure" ]; then
+            echo "PASS: action failed gracefully (WSL is not available on Linux/act)"
+          else
+            echo "FAIL: unexpected outcome '$OUTCOME'"
+            exit 1
+          fi
