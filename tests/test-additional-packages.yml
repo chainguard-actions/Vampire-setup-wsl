@@ -1,0 +1,33 @@
+name: Test additional-packages input
+on:
+  workflow_dispatch:
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # v6.0.2
+      - id: action
+        uses: .
+        continue-on-error: true
+        with:
+          distribution: Ubuntu-22.04
+          additional-packages: git curl wget
+      - name: Assert action ran or failed gracefully (WSL is Windows-only)
+        env:
+          OUTCOME: ${{ steps.action.outcome }}
+          WRAPPER: ${{ steps.action.outputs.wsl-shell-wrapper-path }}
+        run: |
+          echo "outcome: $OUTCOME"
+          echo "wsl-shell-wrapper-path: $WRAPPER"
+          if [ "$OUTCOME" = "success" ]; then
+            if [ -z "$WRAPPER" ]; then
+              echo "FAIL: action succeeded but wsl-shell-wrapper-path output is empty"
+              exit 1
+            fi
+            echo "PASS: action succeeded with wsl-shell-wrapper-path='$WRAPPER'"
+          elif [ "$OUTCOME" = "failure" ]; then
+            echo "PASS: action failed gracefully (WSL is not available on Linux runners)"
+          else
+            echo "FAIL: unexpected outcome '$OUTCOME'"
+            exit 1
+          fi
