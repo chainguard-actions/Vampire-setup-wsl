@@ -6,12 +6,12 @@ Hardened by [Chainguard](https://www.chainguard.dev) from the upstream action at
 
 ## Versions
 
-| Version | Tag | Upstream commit |
-|---------|-----|-----------------|
-| v6.0.0 | [`v6.0.0`](https://github.com/chainguard-actions/Vampire-setup-wsl/tree/v6.0.0) | — |
-| v7.0.0 | [`v7.0.0`](https://github.com/chainguard-actions/Vampire-setup-wsl/tree/v7.0.0) | [`d1da7f2`](https://github.com/Vampire/setup-wsl/commit/d1da7f2c0322a5ee4f24975344f67fc0f5baf364) |
-| v7.1.1 | [`v7.1.1`](https://github.com/chainguard-actions/Vampire-setup-wsl/tree/v7.1.1) | [`6142028`](https://github.com/Vampire/setup-wsl/commit/614202866847d986a4f737ae6020b760283d3f5a) |
-| v7.2.0 | [`v7.2.0`](https://github.com/chainguard-actions/Vampire-setup-wsl/tree/v7.2.0) | [`4c48163`](https://github.com/Vampire/setup-wsl/commit/4c48163d9f981914dd8caa0fc335fe19cca5bff4) |
+| Version | Tag | Upstream commit | Hardening report |
+|---------|-----|-----------------|------------------|
+| v6.0.0 | [`v6.0.0`](https://github.com/chainguard-actions/Vampire-setup-wsl/tree/v6.0.0) | — | [`HARDENING.md`](https://github.com/chainguard-actions/Vampire-setup-wsl/blob/v6.0.0/HARDENING.md) |
+| v7.0.0 | [`v7.0.0`](https://github.com/chainguard-actions/Vampire-setup-wsl/tree/v7.0.0) | [`d1da7f2`](https://github.com/Vampire/setup-wsl/commit/d1da7f2c0322a5ee4f24975344f67fc0f5baf364) | [`HARDENING.md`](https://github.com/chainguard-actions/Vampire-setup-wsl/blob/v7.0.0/HARDENING.md) |
+| v7.1.1 | [`v7.1.1`](https://github.com/chainguard-actions/Vampire-setup-wsl/tree/v7.1.1) | [`6142028`](https://github.com/Vampire/setup-wsl/commit/614202866847d986a4f737ae6020b760283d3f5a) | [`HARDENING.md`](https://github.com/chainguard-actions/Vampire-setup-wsl/blob/v7.1.1/HARDENING.md) |
+| v7.2.0 | [`v7.2.0`](https://github.com/chainguard-actions/Vampire-setup-wsl/tree/v7.2.0) | [`4c48163`](https://github.com/Vampire/setup-wsl/commit/4c48163d9f981914dd8caa0fc335fe19cca5bff4) | [`HARDENING.md`](https://github.com/chainguard-actions/Vampire-setup-wsl/blob/v7.2.0/HARDENING.md) |
 
 ## Privacy
 
